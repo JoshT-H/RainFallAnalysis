@@ -29,7 +29,7 @@ class ARIMAX:
     def mse_aima(self):
         print(f'The ARIMAX MSE is {meanabs(predictions, test)}')
 
-    def aima_plots(self, predictions):
+    def aima_plots(self, prediction):
         self.train.plot()
         predictions.plot(legend = True)
         self.test.plot(legend = True)
