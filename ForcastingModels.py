@@ -6,6 +6,7 @@ from pmdarima import auto_arima
 from statsmodels.tsa.statespace.sarimax import SARIMAX
 from statsmodels.tools.eval_measures import mse, rmse, meanabs
 from AIMAX import ARIMAX
+from RNN import RNN
 
 warnings.filterwarnings('ignore')
 
@@ -59,7 +60,7 @@ if __name__ == '__main__':
     df  = met_data_extractor(df, split = "annual")
 
     # Current forcasting has been set to a year
-    train, test = traintest_split(df, duration = 10);
+    train, test = traintest_split(df, duration = 12);
 
     # Check if Seasonality Component Exisits
     seasonal = seasonal_decompose(df['rainfall'])
@@ -81,13 +82,13 @@ if __name__ == '__main__':
 
 
     # Reccurent Neural Network
-    ninput = 2 # Lenght of Training Object i.e., first two points # should be Around 12
-    nfeatures = 1 # Predict the Third
+    RNN = RNN(train, test).RNNmodel()
 
-    
 
-    
+
+
 
     # df.describe()
     # df.plot()
     plt.pyplot.show()
+
